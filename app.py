@@ -41,24 +41,24 @@ def create_account():
     for i in range(10):
         account_number += random.choice(global_digits)
     f = open("customer.txt", "a")
-    f.write(f'{account_name}|{opening_balance}|{account_type}|{account_email}|{account_number}\n')
+    f.write(f'{account_number}|{account_name}|{opening_balance}|{account_type}|{account_email}|\n')
     f.close()
     print(f'This is your account number: {account_number}')
 
 
 def check_account_details():
-    check_account_number = int(input('Enter account number: '))
+    check_account_number = input('Enter account number: ')
     f = open("customer.txt", "r")
     for x in f:
         loop_line = x
         customer_data = loop_line.split("|")
-        if check_account_number == customer_data[4]:
+        if check_account_number == customer_data[0]:
             print(f'''
-                Account Number: {customer_data[4]}
-                Account Name: {customer_data[0]}
-                Opening Balance: {customer_data[1]}
-                Account Type: {customer_data[2]}
-                Account Email: {customer_data[3]}
+Account Number: {customer_data[0]}
+Account Name: {customer_data[1]}
+Opening Balance: {customer_data[2]}
+Account Type: {customer_data[3]}
+Account Email: {customer_data[4]}
             ''')
 
 
