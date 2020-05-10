@@ -47,7 +47,7 @@ def create_account():
 
 
 def check_account_details():
-    check_account_number = input('Enter account number: ')
+    check_account_number = int(input('Enter account number: '))
     f = open("customer.txt", "r")
     for x in f:
         loop_line = x
@@ -68,6 +68,11 @@ def app_run():
         username = input('Enter your username: ')
         password = input('Enter your password: ')
         login_status = login(username, password)
+        while not login_status:
+            print('You have entered wrong user credentials, please try again')
+            username = input('Enter your username: ')
+            password = input('Enter your password: ')
+            login_status = login(username, password)
         if login_status:
             login_menu_choice = int(show_menu(login_menu))
             while login_menu_choice == 1:
@@ -76,12 +81,5 @@ def app_run():
             if login_menu_choice == 2:
                 check_account_details();
 
-        else:
-            print('fail')
-
 
 app_run()
-
-
-
-
