@@ -36,4 +36,4 @@ env.bak/
 venv.bak/
 
 # session file
-.session.txt
+session.txt
