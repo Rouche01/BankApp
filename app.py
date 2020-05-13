@@ -30,8 +30,7 @@ password: {user_data[1]}
 email: {user_data[2]}
 name: {user_data[3]}
             ''')
-            f.flush()
-            os.fsync(f.fileno())
+            f.close()
             return True
     return False
 
@@ -65,6 +64,9 @@ Opening Balance: {customer_data[2]}
 Account Type: {customer_data[3]}
 Account Email: {customer_data[4]}
             ''')
+            break
+    print('This account number does not exist, please check and try again')
+    check_account_details()
 
 
 def home_menu_execute(menu_choice):
